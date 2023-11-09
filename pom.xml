@@ -13,6 +13,26 @@
         <maven.compiler.target>17</maven.compiler.target>
         <java.version>17</java.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.common.java</groupId>
+            <artifactId>CommonJava</artifactId>
+            <version>1.0</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -21,11 +41,9 @@
                 <version>2.6.9</version>
                 <type>pom</type>
                 <scope>import</scope>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <dependencies>
-
-    </dependencies>
 
 </project>
