@@ -4,6 +4,7 @@ import com.common.java.exception.base.BaseException;
 import com.common.java.exception.base.business.CommonResponseEnum;
 import com.common.java.response.BaseResponse;
 import com.common.java.response.ER;
+import com.common.java.utils.StringsUtils;
 import com.common.spring.exception.business.CommonBusinessResponseEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.ConversionNotSupportedException;
@@ -111,7 +112,7 @@ public class GlobalExceptionHandler {
         log.error("handleServletException: {}", e);
         CommonBusinessResponseEnum commonBusinessResponseEnum = CommonBusinessResponseEnum.SERVLET_EXCEPTION;
         try {
-            commonBusinessResponseEnum = CommonBusinessResponseEnum.valueOf(caseStr(e.getClass().getSimpleName()));
+            commonBusinessResponseEnum = CommonBusinessResponseEnum.valueOf(StringsUtils.upperCamelCase2allCapsCase(e.getClass().getSimpleName()));
         } catch (IllegalArgumentException e1) {
             log.error("class [{}] not defined in enum {}", e.getClass().getName(), CommonBusinessResponseEnum.class.getName());
         }
