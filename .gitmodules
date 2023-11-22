@@ -1,0 +1,4 @@
+[submodule "CommonJava"]
+	path = CommonJava
+	url = git@github.com:yangxiongbro/CommonJava.git
+	branch = release-1.0
