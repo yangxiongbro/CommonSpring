@@ -82,7 +82,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = BaseException.class)
     @ResponseBody
     public BaseResponse handleBaseException(BaseException e) {
-        log.error("handleBaseException: {}", e);
+        log.error("GlobalExceptionHandler#handleBaseException: {}", e);
         return new ER(e.getExceptionAssertResponseEnum().getCode(), getMessage(e));
     }
 
@@ -109,7 +109,7 @@ public class GlobalExceptionHandler {
     })
     @ResponseBody
     public BaseResponse handleServletException(Exception e) {
-        log.error("handleServletException: {}", e);
+        log.error("GlobalExceptionHandler#handleServletException: {}", e);
         CommonBusinessResponseEnum commonBusinessResponseEnum = CommonBusinessResponseEnum.SERVLET_EXCEPTION;
         try {
             commonBusinessResponseEnum = CommonBusinessResponseEnum.valueOf(StringsUtils.upperCamelCase2allCapsCase(e.getClass().getSimpleName()));
@@ -132,7 +132,7 @@ public class GlobalExceptionHandler {
     })
     @ResponseBody
     public BaseResponse handleBindException(BindException e) {
-        log.error("handleBindException: {}", e);
+        log.error("GlobalExceptionHandler#handleBindException: {}", e);
         StringBuilder msg = new StringBuilder();
         for (ObjectError error : e.getBindingResult().getAllErrors()) {
             msg.append(", ");
@@ -153,7 +153,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public BaseResponse handleException(Exception e) {
-        log.error("handleException: {}", e);
+        log.error("GlobalExceptionHandler#handleException: {}", e);
         return new ER(CommonResponseEnum.INTERNAL_SERVER_ERROR.getCode(), CommonResponseEnum.INTERNAL_SERVER_ERROR.toString());
     }
 
